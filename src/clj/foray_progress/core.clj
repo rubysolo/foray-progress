@@ -1,4 +1,4 @@
-(ns foray-progress.core)
+(ns clj.foray-progress.core)
 
 (defn foo
   "I don't do a whole lot."
