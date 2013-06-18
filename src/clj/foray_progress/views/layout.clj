@@ -9,15 +9,13 @@
       [:meta {:http-equiv "X-UA-Compatible" :content "IE=edge,chrome=1"}]
       [:meta {:name "viewport" :content "width=device-width, initial-scale=1, maximum-scale=1"}]
       [:title title]
-  (include-css "/stylesheets/base.css"
-               "/stylesheets/skeleton.css"
-               "/stylesheets/screen.css")
-  (include-css "http://fonts.googleapis.com/css?family=Sigmar+One&v1")]
+  (include-css "/css/bootstrap.min.css")]
   [:body
     [:div {:id "header"}
       [:h1 {:class "container"} "Foray Progress"]]
     [:div {:id "content" :class "container"} body]
     (include-js "http://code.jquery.com/jquery-1.10.0.min.js")
+    (include-js "/js/bootstrap.min.js")
    ]))
 
 (defn four-oh-four []

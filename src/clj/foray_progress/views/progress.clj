@@ -11,22 +11,24 @@
       (label "username" "Username:")
       (text-field "username")
       (for [chapter (range 1 13)]
-        [:div (radio-button "chapter" false chapter)
-              (str "Chapter " chapter)])
-      (submit-button "Save"))])
+        [:label {:class "radio"}
+                (radio-button "chapter" false chapter)
+                (str "Chapter " chapter)])
+      (submit-button {:class "btn btn-primary"} "Save"))])
 
 (defn display-progress [summary]
-  (locking System/out (println summary))
-  [:table {:id "summary"}
-    [:thead
-      [:tr
-        [:th "Chapter"]
-        [:th "Count"]]]
-    [:tbody
-      (map (fn [row]
+  [:div
+    [:h1 "Current Progress"]
+    [:table {:id "summary" :class "table table-bordered table-striped"}
+      [:thead
         [:tr
-          [:td (:chapter row)]
-          [:td (:count row)]]) summary)]])
+          [:th "Chapter"]
+          [:th "Count"]]]
+      [:tbody
+        (map (fn [row]
+          [:tr
+            [:td (:chapter row)]
+            [:td (:count row)]]) summary)]]])
 
 (defn index [summary]
   (layout/common "PROGRESS"
