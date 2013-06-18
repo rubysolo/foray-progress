@@ -1,6 +1,10 @@
-(ns clj.foray-progress.core)
+(ns clj.foray-progress.core
+  (:use [compojure.core :only (defroutes GET)]
+        [ring.adapter.jetty :as ring]))
 
-(defn foo
-  "I don't do a whole lot."
-  [x]
-  (println x "Hello, World!"))
+(defroutes routes
+  (GET "/" [] "<h2>Hello World</h2>"))
+
+(defn -main []
+  (run-jetty routes {:port 8888 :join? false}))
+
