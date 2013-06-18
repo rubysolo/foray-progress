@@ -1,9 +1,17 @@
 (ns clj.foray-progress.core
   (:use [compojure.core :only (defroutes GET)]
-        [ring.adapter.jetty :as ring]))
+        [ring.adapter.jetty :as ring]
+        [hiccup.page :only (html5)]))
+
+(defn index []
+  (html5
+    [:head
+      [:title "Hello World"]]
+    [:body
+      [:div { :id "content" } "Hello World"]]))
 
 (defroutes routes
-  (GET "/" [] "<h2>Hello World</h2>"))
+  (GET "/" [] (index)))
 
 (defn -main []
   (run-jetty routes {:port 8888 :join? false}))

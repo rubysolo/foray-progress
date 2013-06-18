@@ -11,6 +11,7 @@
                  [postgresql "9.1-901.jdbc4"]
                  [ring/ring-jetty-adapter "1.1.6"]
                  [compojure "1.1.3"]
+                 [hiccup "1.0.2"]
                  [domina "1.0.0"]]
 
   :main      clj.foray-progress.core
