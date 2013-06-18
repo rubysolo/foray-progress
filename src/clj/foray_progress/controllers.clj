@@ -15,5 +15,5 @@
   (ring/redirect "/"))
 
 (defroutes routes
-  (GET "/" [] (index))
-  (POST "/" [progress] (create progress)))
+  (GET  "/" [] (index))
+  (POST "/" {params :params} (create params)))

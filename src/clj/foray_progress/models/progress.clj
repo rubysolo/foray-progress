@@ -14,9 +14,12 @@
       (into [] results))))
 
 (defn store [progress]
-  (sql/with-connection (System/getenv "DATABASE_URL")
-    (println progress)
-    (sql/update-or-insert-values
-      :progress
-      ["user = ?" (:username progress)]
-      progress)))
+  (let [p (assoc progress :chapter (Integer. (:chapter progress)))]
+    (try
+      (sql/with-connection (System/getenv "DATABASE_URL")
+        (sql/update-or-insert-values
+          :progress
+          ["username = ?" (:username p)]
+          p))
+      (catch Exception e
+        (println (.getNextException e))))))

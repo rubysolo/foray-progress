@@ -1,6 +1,6 @@
 (ns clj.foray-progress.views.layout
   (:use [hiccup.core :only (html)]
-        [hiccup.page :only (html5 include-css)]))
+        [hiccup.page :only (html5 include-css include-js)]))
 
 (defn common [title & body]
   (html5
@@ -16,7 +16,9 @@
   [:body
     [:div {:id "header"}
       [:h1 {:class "container"} "Foray Progress"]]
-    [:div {:id "content" :class "container"} body]]))
+    [:div {:id "content" :class "container"} body]
+    (include-js "http://code.jquery.com/jquery-1.10.0.min.js")
+   ]))
 
 (defn four-oh-four []
   (common "Page Not Found"
