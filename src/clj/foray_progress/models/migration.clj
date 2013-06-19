@@ -2,7 +2,8 @@
   (:require [clojure.java.jdbc :as sql]))
 
 (defn create-progress-records []
-  (sql/with-connection (System/getenv "DATABASE_URL")
+  (sql/with-connection (or (System/getenv "HEROKU_POSTGRESQL_BRONZE_URL")
+                           (System/getenv "DATABASE_URL"))
     (sql/create-table :progress
       [:id :serial "PRIMARY KEY"]
       [:chapter :integer "NOT NULL"]
